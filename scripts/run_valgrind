@@ -1,0 +1,32 @@
+#!/bin/bash
+
+make clean
+clear
+make
+clear
+echo "\n"
+
+echo -e "\n\033[1;32m ------------------------------------------------------------------------------- \n \033[0m "
+
+clear
+
+for image in images/*.jp*g
+do
+	if [ "$image" != "images/biiiiiig.jpg" ] && [ "$image" != "images/complexite.jpeg" ] && [ "$image" != "images/big.jpg" ];
+	then
+		# get image name without the images/
+		image_name=$(echo $image | sed -n 's/images\/\(.*\)/\1/p')
+		# print image name
+		echo -e "\n Image name: $image_name"
+		echo -e "\n"
+		echo -e "\033[1;36m valgrind --leak-check=yes --track-origins=yes bin/jpeg2ppm $image \033[0m "
+		echo -e "\n"
+		valgrind --leak-check=yes --track-origins=yes bin/jpeg2ppm "$image"
+		echo -e "\n"
+		echo -e "\033[1;32m ------------------------------------------------------------------------------- \033[0m "
+		echo -e "\n"
+		read -n 1 -s -r -p " Press any key to continue"
+		clear
+	fi
+
+done

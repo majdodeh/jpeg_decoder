@@ -1,0 +1,77 @@
+#!/bin/bash
+
+make clean
+clear
+make
+clear
+make tests
+clear
+
+echo -e "\n\033[1;32m | EXTRACTEUR TEST ------------------------------------------------------------- \n \033[0m "
+bin/extracteur images/zig-zag.jpg
+
+read -n 1 -s -r -p " Press any key to continue"
+clear
+
+echo -e "\n\033[1;32m | iDCT TEST ------------------------------------------------------------------- \n \033[0m "
+bin/idct
+
+read -n 1 -s -r -p " Press any key to continue"
+clear
+
+echo -e "\n\033[1;32m | IQZZ TEST ------------------------------------------------------------------- \n \033[0m "
+bin/iqzz
+
+read -n 1 -s -r -p " Press any key to continue"
+reset
+
+echo -e "\n\033[1;32m | MCU TEST -------------------------------------------------------------------- \n \033[0m "
+bin/mcu  images/complexite.jpeg
+
+read -n 1 -s -r -p " Press any key to continue"
+clear
+
+echo -e "\n\033[1;32m | RGB TEST -------------------------------------------------------------------- \n \033[0m "
+bin/rgb
+
+read -n 1 -s -r -p " Press any key to continue"
+clear
+
+echo -e "\n\033[1;32m | PPM TEST -------------------------------------------------------------------- \n \033[0m "
+bin/ppm
+echo -e "\n"
+read -n 1 -s -r -p " Press any key to continue"
+echo -e "\n"
+ls -al images/
+echo -e "\n"
+read -n 1 -s -r -p " Press any key to continue"
+clear
+
+echo -e "\n\033[1;32m | UPSAMLING TEST -------------------------------------------------------------- \n \033[0m "
+bin/upsampling
+echo -e "\n"
+read -n 1 -s -r -p " Press any key to continue"
+clear
+
+echo -e "\n\033[1;32m | HUFFMAN TEST -------------------------------------------------------------- \n \033[0m "
+bin/huffman
+echo -e "\n"
+read -n 1 -s -r -p " Press any key to continue"
+clear
+
+echo -e "\n\033[1;32m | BITSTREAM TEST -------------------------------------------------------------- \n \033[0m "
+bin/bitstream images/test_bitstream.txt
+echo -e "\n"
+read -n 1 -s -r -p " Press any key to continue"
+rm images/test_bitstream.txt
+clear
+
+echo -e "\n\033[1;32m | JPEG_READER TEST -------------------------------------------------------------- \n \033[0m "
+bin/jpeg_reader images/thumbs.jpg
+echo -e "\n"
+read -n 1 -s -r -p " Press any key to continue"
+clear
+
+echo -e "\n"
+
+echo -e "\n\033[1;36m | END OF TESTS ---------------------------------------------------------------- \n \033[0m "
